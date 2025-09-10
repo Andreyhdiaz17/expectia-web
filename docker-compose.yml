@@ -1,0 +1,15 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: iso_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: Colombia123!
+      MYSQL_DATABASE: auditoria_iso
+    ports:
+      - "3306:3306"
+    command: ["mysqld","--default-authentication-plugin=mysql_native_password","--character-set-server=utf8mb4","--collation-server=utf8mb4_unicode_ci"]
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
